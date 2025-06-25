@@ -49,7 +49,7 @@ export default function App() {
             className="mt-6"
           >
             <a
-              href="/Vidura Abeysinghe_CV.pdf"
+              href="/ViduraAbeysinghe_CV.pdf"
               download
               className="inline-block px-6 py-3 bg-gray-800 text-white font-medium rounded-md hover:bg-gray-700 transform transition-transform duration-300 hover:-translate-y-1"
             >
