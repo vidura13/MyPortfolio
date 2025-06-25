@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+html {
+  font-size: 17px; /* Default is 16, increase if needed */
+}
+
+.prose h2 {
+  @apply text-4xl md:text-5xl font-extrabold mb-6;
+}
+
+.prose {
+  @apply text-lg md:text-xl leading-relaxed;
+}
+
+.prose strong {
+  @apply font-bold text-blue-600 dark:text-blue-400;
+}
