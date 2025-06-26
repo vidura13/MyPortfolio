@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
+import ProjectsSection from './components/ProjectsSection';
 import ArticleCard from './components/ArticleCard';
 import MarkdownRenderer from './components/MarkdownRenderer';
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaRegFileCode, FaReact, FaGitAlt } from 'react-icons/fa';
@@ -199,43 +200,8 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 md:px-8 bg-white dark:bg-gray-800">
-         <motion.h2
-          className="text-3xl font-bold text-center mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Projects & Contributions
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <ProjectCard
-            title="Customer management system  "
-            description="A practical solution I designed to resolves inefficiencies in managing customer loyalty points for a fuel station manager"
-            image="/projects/Project1_1.png"
-            link="#"
-          />
-          <ProjectCard
-            title="OpenSesame"
-            description="A web-based platform designed to help with the academic experience of  students at the Open University of Sri Lanka (OUSL)"
-            image="/projects/Project2_1.png"
-            link="#"
-          />
-          <ProjectCard
-            title="Event management system"
-            description="This event management system allows administration to create, manage, register participants to events and get analysis"
-            image="/projects/Project3_1.png"
-            link="#"
-          />
-          <ProjectCard
-            title="CashCoach - Mobile app"
-            description="An android Aaplication developed to help users manage daily expenses in a more efficient and manageable way"
-            image="/projects/Project4_1.png"
-            link="#"
-          />
-        </div>
-      </section>
+      <ProjectsSection />
+
 
       {/* Medium Section */}
       <section id="medium" className="py-20 px-4 md:px-8 bg-gray-50 dark:bg-gray-800">
