@@ -6,7 +6,6 @@ import React, { useState, useEffect } from "react";
 
 const ProjectsSection = () => {
     const [selectedProject, setSelectedProject] = useState(null);
-    // Prevent background scroll
     useEffect(() => {
         if (selectedProject) {
             document.body.style.overflow = "hidden";
@@ -33,12 +32,11 @@ const ProjectsSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {projects.map((project, idx) => (
                     <div key={idx} onClick={() => setSelectedProject(project)}>
-                        {/* Remove link so click works for modal */}
                         <ProjectCard
                             title={project.title}
                             description={project.description}
                             image={project.image}
-                            link={undefined} // disables <a>
+                            link={undefined} 
                         />
                     </div>
                 ))}
