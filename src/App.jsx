@@ -160,7 +160,7 @@ export default function App() {
               <span>01</span> ABOUT ME
             </div>
             <h2>
-              Curiosity is
+              Curiosity is 
               <br />
               where it starts<span className="accent">.</span>
             </h2>
@@ -290,7 +290,7 @@ export default function App() {
               Learning never stops<span className="accent">.</span>
             </h2>
             <p>
-              Building knowledge through experience.
+              Building knowledge through experience. 
               <br />
               Staying curious along the way.
             </p>
