@@ -1,101 +1,152 @@
-import React, { useState } from "react";
-
-const ProjectModal = ({ show, onClose, project }) => {
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { Arrow, Close } from "./Icons";
+export default function ProjectModal({ project, onClose }) {
+  const dialog = useRef(null);
+  const lightbox = useRef(null);
   const [enlargedImg, setEnlargedImg] = useState(null);
-
-  if (!show || !project) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center">
-
-      <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-lg max-w-lg w-full max-h-[90vh] p-6 overflow-y-auto">
-
-        <button
-          className="absolute top-4 right-4 text-2xl text-gray-600 dark:text-gray-100 hover:text-red-500"
-          onClick={onClose}
-          aria-label="Close"
-        >
-          &times;
-        </button>
-
-        {/* Modal content */}
-        <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">{project.longDescription}</p>
-        {project.functionalities && (
-          <div className="mb-4">
-            <span className="font-semibold">Functionalities:</span>
-            <ul className="list-disc list-inside ml-4 mt-1 text-gray-700 dark:text-gray-300">
-              {project.functionalities.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <div className="mb-3">
-          <span className="font-semibold">Used technologies: </span>
-          <span>{project.techStack}</span>
-        </div>
-        {project.collaborators && (
-          <div className="mb-3">
-            <span className="font-semibold">Collaborators: </span>
-            {project.collaborators.join(", ")}
-          </div>
-        )}
-
-        {project.screenshots && project.screenshots.length > 0 && (
-          <div>
-            <span className="font-semibold">Screenshots:</span>
-            <div className="flex gap-2 mt-3 mb-4 flex-wrap">
-              {project.screenshots.map((src, idx) => (
-                <img
-                  key={idx}
-                  src={src}
-                  alt={`Screenshot ${idx + 1}`}
-                  className="w-32 h-20 object-cover rounded border border-gray-300 dark:border-gray-700 cursor-pointer hover:scale-110 transition"
-                  onClick={() => setEnlargedImg(src)}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {project.link && project.link !== "#" && (
-          <div className="mb-4">
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-            >
-              View Project
-            </a>
-          </div>
-        )}
-      </div>
-
-      {/* Image Modal */}
-      {enlargedImg && (
-        <div
-          className="fixed inset-0 z-60 bg-black bg-opacity-80 flex items-center justify-center"
-          onClick={() => setEnlargedImg(null)}
-        >
-          <img
-            src={enlargedImg}
-            alt="Enlarged Screenshot"
-            className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg border-4 border-white"
-            onClick={e => e.stopPropagation()}
-          />
+  useEffect(() => {
+    const element = dialog.current;
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    element.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      element.close();
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, []);
+  useEffect(() => {
+    if (enlargedImg) lightbox.current?.showModal();
+  }, [enlargedImg]);
+  function trapFocus(event) {
+    if (event.key !== "Tab") return;
+    event.stopPropagation();
+    const root = event.currentTarget;
+    const focusable = [
+      ...root.querySelectorAll('button, a[href], [tabindex="0"]'),
+    ].filter(
+      (element) =>
+        element.closest("dialog") === root && element.getClientRects().length,
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  }
+  function closeLightbox() {
+    lightbox.current?.close();
+    setEnlargedImg(null);
+  }
+  return createPortal(
+    <dialog
+      ref={dialog}
+      className="project-dialog"
+      aria-labelledby="project-dialog-title"
+      onKeyDown={trapFocus}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div className="dialog-content">
+        <div className="dialog-topline">
+          <span className="eyebrow">PROJECT DETAILS</span>
           <button
-            className="absolute top-6 right-8 text-4xl text-white hover:text-red-400"
-            onClick={() => setEnlargedImg(null)}
-            aria-label="Close"
+            type="button"
+            className="icon-button"
+            onClick={onClose}
+            aria-label="Close project details"
+            autoFocus
           >
-            &times;
+            <Close />
           </button>
         </div>
-      )}
-    </div>
+        <h2 id="project-dialog-title">{project.title}</h2>
+        <p>{project.longDescription}</p>
+        <h3>What it does</h3>
+        <ul>
+          {project.functionalities.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <h3>Built with</h3>
+        <div className="tags">
+          {project.techStack.split(",").map((tech) => (
+            <span key={tech}>{tech.trim()}</span>
+          ))}
+        </div>
+        {project.collaborators && (
+          <>
+            <h3>Collaborators</h3>
+            <p>{project.collaborators.join(", ")}</p>
+          </>
+        )}
+        <h3>A closer look</h3>
+        <p className="small-text">Select a screenshot to enlarge</p>
+        <div className="dialog-screenshots">
+          {project.screenshots?.map((src, index) => (
+            <button
+              type="button"
+              key={src}
+              onClick={() => setEnlargedImg(src)}
+              aria-label={`Enlarge ${project.title} screenshot ${index + 1}`}
+            >
+              <img src={src} alt={`${project.title} screenshot ${index + 1}`} />
+            </button>
+          ))}
+        </div>
+        {project.link && project.link !== "#" && (
+          <a
+            className="button button-primary"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Repository / Live Demo<Arrow diagonal />
+          </a>
+        )}
+        {enlargedImg && (
+          <dialog
+            ref={lightbox}
+            className="image-dialog"
+            aria-label="Enlarged project screenshot"
+            onKeyDown={trapFocus}
+            onCancel={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              closeLightbox();
+            }}
+            onClick={(event) => {
+              if (event.target === event.currentTarget) closeLightbox();
+            }}
+          >
+            <button
+              type="button"
+              className="icon-button"
+              onClick={closeLightbox}
+              aria-label="Close enlarged screenshot"
+              autoFocus
+            >
+              <Close />
+            </button>
+            <img
+              src={enlargedImg}
+              alt={`${project.title} enlarged screenshot`}
+            />
+          </dialog>
+        )}
+      </div>
+    </dialog>,
+    document.body,
   );
-};
-
-export default ProjectModal;
+}

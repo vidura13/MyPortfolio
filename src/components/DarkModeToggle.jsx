@@ -1,36 +1,48 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(document.documentElement.classList.contains('dark'));
-
-  const toggleDarkMode = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
+export default function DarkModeToggle() {
+  const [darkMode, setDarkMode] = useState(() =>
+    document.documentElement.classList.contains("dark"),
+  );
+  function toggleTheme() {
+    const next = !darkMode;
+    document.documentElement.classList.toggle("dark", next);
+    document.documentElement.style.colorScheme = next ? "dark" : "light";
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {
+      /* Theme still works if storage is unavailable. */
     }
-    setDarkMode(!darkMode);
-  };
-
+    setDarkMode(next);
+  }
   return (
     <button
-      onClick={toggleDarkMode}
-      className="ml-4 p-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white transition"
-      aria-label="Toggle dark mode"
+      type="button"
+      className="icon-button theme-toggle"
+      onClick={toggleTheme}
+      aria-label={`Switch to ${darkMode ? "light" : "dark"} theme`}
+      title={`Switch to ${darkMode ? "light" : "dark"} theme`}
     >
-      {darkMode ? (
-        // Sun Icon
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      ) : (
-        // Moon Icon
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-      )}
+      <svg
+        width="19"
+        height="19"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        {darkMode ? (
+          <>
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4m0-14.2-1.4 1.4M6.3 17.7l-1.4 1.4" />
+          </>
+        ) : (
+          <path d="M20.5 13.1A8.8 8.8 0 0 1 10.9 3.5a9 9 0 1 0 9.6 9.6Z" />
+        )}
+      </svg>
     </button>
   );
-};
-
-export default DarkModeToggle;
+}

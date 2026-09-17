@@ -1,35 +1,25 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-
-const roles = [
-  'Frontend Developer',
-  'Full Stack Engineer',
-  'Web Developer',
-];
-
-const AnimateText = () => {
+import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
+const roles = ["Full Stack Engineer", "AI & ML Engineer", "Web Developer"];
+export default function AnimateText() {
   const [index, setIndex] = useState(0);
-
+  const reducedMotion = useReducedMotion();
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % roles.length);
-    }, 2000); // Change every 2 seconds
-
+    if (reducedMotion) return;
+    const interval = setInterval(
+      () => setIndex((previous) => (previous + 1) % roles.length),
+      4000,
+    );
     return () => clearInterval(interval);
-  }, []);
-
+  }, [reducedMotion]);
   return (
-    <motion.span
-      key={index}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3 }}
-      className="block"
-    >
-      {roles[index]}
-    </motion.span>
+    <>
+      <span className="sr-only">
+        Full Stack Engineer, AI & ML Engineer,Web Developer
+      </span>
+      <span key={index} className="animated-role" aria-hidden="true">
+        {roles[index]}
+      </span>
+    </>
   );
-};
-
-export default AnimateText;
+}

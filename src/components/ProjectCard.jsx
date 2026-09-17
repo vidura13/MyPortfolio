@@ -1,28 +1,42 @@
-import { motion } from 'framer-motion';
-import React from 'react';
-
-const ProjectCard = ({ title, description, image }) => {
+import { Arrow } from "./Icons";
+export default function ProjectCard({ project, index, onOpen }) {
+  const tags = project.techStack.split(",").slice(0, 3);
   return (
-    <motion.div
-      className="block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">{title}</h3>
-        <p className="text-gray-600 dark:text-gray-300">{description}</p>
-      </div>
-    </motion.div>
+    <article className={`project-card project-${index + 1}`}>
+      <button
+        type="button"
+        className="project-trigger"
+        onClick={onOpen}
+        aria-label={`View ${project.title} details`}
+        aria-haspopup="dialog"
+      >
+        <div className="project-image">
+          <span className="project-number">0{index + 1} / PROJECT</span>
+          <img
+            src={project.image}
+            alt={`${project.title} interface`}
+            loading="lazy"
+            width="1000"
+            height="600"
+          />
+          <span className="project-image-link">
+            <Arrow diagonal />
+          </span>
+        </div>
+        <div className="project-meta">
+          <span>{index === 3 ? "MOBILE APPLICATION" : "WEB APPLICATION"}</span>
+          <span>
+            VIEW PROJECT <Arrow diagonal />
+          </span>
+        </div>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <div className="tags">
+          {tags.map((tag) => (
+            <span key={tag}>{tag.trim()}</span>
+          ))}
+        </div>
+      </button>
+    </article>
   );
-};
-
-export default ProjectCard;
+}
