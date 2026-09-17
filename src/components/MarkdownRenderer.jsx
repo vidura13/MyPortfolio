@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-
-const MarkdownRenderer = ({ fileName }) => {
-  const [content, setContent] = useState('');
-
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+export default function MarkdownRenderer({ fileName }) {
+  const [content, setContent] = useState("");
+  const [error, setError] = useState(false);
   useEffect(() => {
-    fetch(`/content/${fileName}.md`)
-      .then(res => res.text())
-      .then(text => setContent(text))
-      .catch(() => setContent('# Error\nFailed to load content.'));
+    const controller = new AbortController();
+    fetch(`/content/${fileName}.md`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error("Content unavailable");
+        return response.text();
+      })
+      .then((text) => {
+        setContent(text);
+        setError(false);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") setError(true);
+      });
+    return () => controller.abort();
   }, [fileName]);
-
   return (
-    <div className="prose max-w-none">
-      <ReactMarkdown
-        components={{
-          img: ({ node, ...props }) => (
-            <img
-              {...props}
-              className="mx-auto my-6 w-40 h-40 object-cover"
-              alt={props.alt || 'Profile'}
-            />
-          ),
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+    <div className="prose">
+      {error ? (
+        <p role="status">
+          This content couldn’t be loaded. Please refresh the page or{" "}
+          <a href="mailto:viduravd@gmail.com">get in touch</a>.
+        </p>
+      ) : (
+        <ReactMarkdown>{content}</ReactMarkdown>
+      )}
     </div>
   );
-};
-
-export default MarkdownRenderer;
+}

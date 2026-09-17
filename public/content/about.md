@@ -1,27 +1,6 @@
-## **About Me**
+I’m a enthusiastic developer who enjoys turning ideas into practical digital solutions. My interests have grown from traditional software and web development into artificial intelligence and intelligent application development
 
-![My Photo](/myphoto.png)
-&nbsp;
+My experience & interests include **Full-Stack Development**, **AI Agents**, **Backend Engineering**, **Workflow Automations** and **Software Testing**. I enjoy learning new technologies and applying them to projects that solve real-world challenges
 
-I’m an enthusiastic developer with a strong passion for software development, web development, emerging technologies, software testing & quality assurance.  
-&nbsp;
+I’m seeking opportunities to apply and expand my technical skills through real-world projects, contribute to impactful and innovative software and AI solutions and continue growing as an engineer
 
-I'm currently seeking opportunities to expand my skills, gain hands-on experience, and contribute to impactful and innovative projects.  
-&nbsp;
-
-I specialize in building solutions using **ASP.NET Core**, **SQL**, **React.js** and **HTML/CSS/JavaScript**.  
-&nbsp;
-
-**Full Name:** Vidura Dayan Abeysinghe  
-&nbsp;
-
-**Phone:** +94 71 8971 513
-&nbsp;
-
-**Email:** viduravd@gmail.com  
-&nbsp;
-
-**Website:** [Portfolio](https://viduraabeysinghe.netlify.app/)
-&nbsp;
-
-**Location:** Kandy, Sri Lanka

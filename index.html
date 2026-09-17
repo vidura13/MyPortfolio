@@ -1,13 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" style="color-scheme: dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vidura Abeysinghe</title>
+    <meta
+      name="description"
+      content="Vidura Abeysinghe — developer based in Kandy, Sri Lanka. Explore web and mobile projects built with React, ASP.NET Core, and more."
+    />
+    <meta
+      property="og:title"
+      content="Vidura Abeysinghe - Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Thoughtful code. Meaningful experiences. Explore my projects, skills, and the person behind the pixels."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://viduraabeysinghe.netlify.app/" />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans-400.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <title>Vidura Abeysinghe — Developer Portfolio</title>
+    <script>
+      // Run before rendering to avoid a flash of the wrong theme. Preserve the original dark default.
+      try {
+        const theme =
+          localStorage.getItem("theme") === "light" ? "light" : "dark";
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        document.documentElement.style.colorScheme = theme;
+      } catch (_) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript
+      >This portfolio needs JavaScript to display. You can reach Vidura at
+      <a href="mailto:viduravd@gmail.com">viduravd@gmail.com</a>.</noscript
+    >
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

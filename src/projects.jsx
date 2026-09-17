@@ -1,8 +1,51 @@
 export const projects = [
   {
-    title: "Customer management system",
-    description: "A practical solution I designed to resolve inefficiencies in managing customer loyalty points for a fuel station",
+    title: "Enterprise AI Sales Agent",
+    description: " AI powered enterprise assistant for knowledge retrieval and product intelligence using graph and vector databases",
     image: "/projects/Project1_1.png",
+    link: "#",
+    longDescription:
+      "This is a practical enterprise AI solution developed to address challenges in knowledge retrieval, product intelligence and information management. The system combines graph and vector databases populated through web-scraped data to provide a centralized source of structured and unstructured enterprise knowledge. It uses conversational Agentic AI workflows built with LangGraph and the AI API to understand user queries, retrieve relevant information and provide context-aware responses. Security and reliability were further enhanced through AI guardrails to help prevent unsafe interactions, hallucinations and invalid requests.",
+    functionalities: [
+      "Intelligent knowledge search and retrieval from enterprise data",
+      "Product information search and contextual product intelligence",
+      "Conversational AI assistant for natural language queries",
+      "Graph-based knowledge retrieval using Neo4j",
+      "Web scraping and automated data ingestion for knowledge base population",
+      "Agentic AI workflows and task orchestration using LangGraph",
+      "Input validation, error handling, response reliability and AI guardrails for secure interactions",
+      "Multi database integration with PostgreSQL, Neo4j and ChromaDB"
+    ],
+    techStack: "Python, LangGraph, Neo4J, Chroma DB, React, PostgreSQL, Docker",
+    screenshots: [
+      "/projects/Project1_1.png"
+    ]
+  },
+  {
+    title: "OpenSesame - Academic Experience Platform",
+    description: "A web-based platform designed to help with the academic experience of students at the Open University of Sri Lanka (OUSL)",
+    image: "/projects/Project2_1.png",
+    link: "https://vinuwa98.github.io/Open_Sesame/",
+    longDescription:
+      "OpenSesame is a platform created to enhance the academic experience for students at OUSL. It offers resources, event info, communication tools, and integrates core university services into a streamlined digital hub. The project focused on accessibility and user-friendliness for a diverse student body.",
+    functionalities: [
+      "Explore details about various programs offered by the Open University of Sri Lanka.",
+      "Find about course fees of programs from different departments.",
+      "Find answers to common queries and concerns that students may have",
+      "Stay updated on crucial dates, including registration periods, examination schedules and more",
+      "Learn about bursaries available to OUSL students."
+    ],
+    techStack: "JavaScript, HTML, Cascading Style Sheets (CSS)",
+    collaborators: ["Vinod Warnakulasooriya", "Oshada Rathnasiri", "Ishfa Ishak", "Hafsa Sindikar", "Sandun Bandara"],
+    screenshots: [
+      "/projects/Project2_1.png"
+    ]
+  },
+
+  {
+    title: "Customer Management System",
+    description: "A practical solution I designed to resolve inefficiencies in managing customer loyalty points for a fuel station",
+    image: "/projects/Project3_1.png",
     link: "#",
     longDescription:
       "This is a practical solution I designed to address real world challenges faced by a fuel station manager in managing customer data and loyalty points. The application provides a centralized platform for secure data management, loyalty point tracking and actionable insights, improving operational efficiency and customer satisfaction.",
@@ -15,50 +58,12 @@ export const projects = [
     ],
     techStack: "React.js, JavaScript, HTML5, CSS3, ASP.NET Core, SQLite, Postman API testing",
     screenshots: [
-      "/projects/Project1_1.png"
-    ]
-  },
-  {
-    title: "OpenSesame",
-    description: "A web-based platform designed to help with the academic experience of students at the Open University of Sri Lanka (OUSL)",
-    image: "/projects/Project2_1.png",
-    link: "https://github.com/vinuwa98/Open_Sesame",
-    longDescription:
-      "OpenSesame is a platform created to enhance the academic experience for students at OUSL. It offers resources, event info, communication tools, and integrates core university services into a streamlined digital hub. The project focused on accessibility and user-friendliness for a diverse student body.",
-    functionalities: [
-      "Explore details about various programs offered by the Open University of Sri Lanka.",
-      "Find about course fees of programs from different departments.",
-      "Find answers to common queries and concerns that students may have",
-      "Stay updated on crucial dates, including registration periods, examination schedules, and more",
-      "Learn about bursaries available to OUSL students."
-    ],
-    techStack: "JavaScript, HTML, Cascading Style Sheets (CSS)",
-    collaborators: ["Vinod Warnakulasooriya", "Oshada Rathnasiri", "Ishfa Ishak", "Hafsa Sindikar", "Sandun Bandara"],
-    screenshots: [
-      "/projects/Project2_1.png"
-    ]
-  },
-  {
-    title: "Event management system",
-    description: "This event management system allows administration to create, manage, register participants to events and get analysis",
-    image: "/projects/Project3_1.png",
-    link: "https://github.com/vidura13/Event-management-system",
-    longDescription:
-      "The Event Management System enables organizations to efficiently create, update, and manage events while streamlining attendee registration and analytics. Designed for scalability and maintainability, the system uses a layered backend and a responsive, professional frontend. This simplifies event organization, maximizes attendee management, and provide analytics. Target users are event organizers and administration..",
-    functionalities: [
-      "Full CRUD: Create, Read, Update and Delete events",
-      "Pagination, search, and advanced filtering by date, location or tags",
-      "Input validations and error handling for all API endpoints",
-      "Real-time analytics: total attendees, capacity utilization per event",
-      "Responsive design for a seamless user experience",
-    ],
-    techStack: "C#, .NET 8, ASP.NET Core Web API, React.js, JavaScript, MySQL, SCSS, Postman API testing",
-    screenshots: [
       "/projects/Project3_1.png"
     ]
   },
+
   {
-    title: "CashCoach - Mobile app",
+    title: "CashCoach - Mobile Application",
     description: "An android Application developed to help users manage daily expenses in a more efficient and manageable way",
     image: "/projects/Project4_1.png",
     link: "#",
@@ -71,7 +76,7 @@ export const projects = [
       "Generate reports and insights on spending habits",
     ],
     techStack: "Java, Android Studio, Firebase",
-    collaborators: ["Vinod Warnakulasooriya", "Oshada Rathnasiri","Chethiya Amunugama"],
+    collaborators: ["Vinod Warnakulasooriya", "Oshada Rathnasiri", "Chethiya Amunugama"],
     screenshots: [
       "/projects/Project4_1.png"
     ]
