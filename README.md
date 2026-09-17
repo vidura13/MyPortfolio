@@ -1,3 +1,3 @@
 # Vidura Abeysinghe
 
-Portfolio with react + Vite
+Hosted on: https://viduraabeysinghe.netlify.app/
