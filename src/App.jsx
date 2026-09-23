@@ -318,16 +318,9 @@ export default function App() {
                 <span>06</span> ARTICLES & RESEARCH
               </div>
               <h2>
-                Writings & publications<span className="accent">.</span>
+                Writing & publications<span className="accent">.</span>
               </h2>
             </div>
-            <a
-              className="text-link"
-              href="https://medium.com/@viduravd"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            </a>
           </div>
           <ArticleCard
             category="CONFERENCE PAPER"

@@ -43,20 +43,20 @@ export const projects = [
   },
 
   {
-    title: "Customer Management System",
-    description: "A practical solution I designed to resolve inefficiencies in managing customer loyalty points for a fuel station",
+    title: "Fuel Station Management System",
+    description: "A practical solution I designed to resolve inefficiencies for a fuel station for better management and recording of daily operations",
     image: "/projects/Project3_1.png",
     link: "#",
     longDescription:
-      "This is a practical solution I designed to address real world challenges faced by a fuel station manager in managing customer data and loyalty points. The application provides a centralized platform for secure data management, loyalty point tracking and actionable insights, improving operational efficiency and customer satisfaction.",
+      "This is a practical solution I designed to address real world challenges faced by a fuel station manager in managing daily operations and bookkeeping. The application provides a centralized platform for secure sales management, dip tracking, staff & salary management, debtor managements and other actionable insights, improving operational efficiency and customer satisfaction.",
     functionalities: [
-      "Search & visualize customer data",
-      "Update & manage customer data",
-      "Loyalty points tracking including non-expired and expired loyalty points",
+      "Visualize sales data",
+      "Update & manage inventory data",
+      "Manage staff and salaries",
       "Secure authentication with role-based access for secure data management.",
       "Input validations and error handling for all API endpoints"
     ],
-    techStack: "React.js, JavaScript, HTML5, CSS3, ASP.NET Core, SQLite, Postman API testing",
+    techStack: "Next.js, React.js, TypeScript, JavaScript, Tailwind CSS, Firebase Firestore (NoSQL), Postman API testing, Git",
     screenshots: [
       "/projects/Project3_1.png"
     ]

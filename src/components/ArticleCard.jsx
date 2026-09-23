@@ -16,15 +16,17 @@ export default function ArticleCard({
       rel="noopener noreferrer"
       className={`article-card${image ? "" : " article-card--text-only"}`}
     >
-      <div className="article-image">
-        <img
-          src={image}
-          alt={imageAlt}
-          loading="lazy"
-          width="600"
-          height="400"
-        />
-      </div>
+      {image && (
+        <div className="article-image">
+          <img
+            src={image}
+            alt={imageAlt}
+            loading="lazy"
+            width="600"
+            height="400"
+          />
+        </div>
+      )}
       <div className="article-copy">
         <div className="article-meta">
           <span>{category}</span>
