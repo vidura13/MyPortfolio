@@ -6,18 +6,20 @@ export default function ArticleCard({
   link,
   date,
   info,
+  category = "BEYOND THE CODE",
+  imageAlt = title,
 }) {
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="article-card"
+      className={`article-card${image ? "" : " article-card--text-only"}`}
     >
       <div className="article-image">
         <img
           src={image}
-          alt="Sri Lankan cricket"
+          alt={imageAlt}
           loading="lazy"
           width="600"
           height="400"
@@ -25,7 +27,7 @@ export default function ArticleCard({
       </div>
       <div className="article-copy">
         <div className="article-meta">
-          <span>MEDIUM</span>
+          <span>{category}</span>
           <span>{date}</span>
         </div>
         <h3>{title}</h3>

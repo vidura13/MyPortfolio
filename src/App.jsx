@@ -268,7 +268,7 @@ export default function App() {
               </div>
 
               <h3>AI & ML Engineer - Intern</h3>
-              <p>Sri Lanka Telecom PLC - Colombo, Sri Lanka <br/></p>
+              <p>Sri Lanka Telecom PLC - Colombo, Sri Lanka <br /></p>
 
               <ul className="experience-highlights">
                 <li>Engineered enterprise conversational AI agents using LangGraph and the OpenAI API, implementing semantic caching to reduce redundant API calls and LLM inference latency.</li>
@@ -315,10 +315,10 @@ export default function App() {
           <div className="section-heading">
             <div>
               <div className="eyebrow">
-                <span>06</span> BEYOND THE CODE
+                <span>06</span> ARTICLES & RESEARCH
               </div>
               <h2>
-                A space to think out loud<span className="accent">.</span>
+                Writings & publications<span className="accent">.</span>
               </h2>
             </div>
             <a
@@ -327,10 +327,19 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Find me on Medium <Arrow diagonal />
             </a>
           </div>
           <ArticleCard
+            category="CONFERENCE PAPER"
+            title="Green Mart: A user-centered mobile application for sustainable online shopping"
+            description="A user-centered design and usability evaluation of GreenMart, a prototype sustainable shopping platform. Published in the proceedings of the International Symposium on Agriculture and Environment (ISAE 2026), University of Ruhuna."
+            link="https://www.researchgate.net/publication/414470982_Green_Mart_A_user-centered_mobile_application_for_sustainable_online_shopping"
+            date="Sep 2026"
+            info="Read the publication on ResearchGate"
+          />
+          <ArticleCard
+            category="BLOG ARTICLE"
+            imageAlt="Sri Lankan cricket"
             title="The History of Sri Lankan Cricket"
             description="Cricket, often referred to as a religion in Sri Lanka, has been a source of national pride and passion for decades. A look back at where it all began."
             image="/historyofslcricArticle.webp"

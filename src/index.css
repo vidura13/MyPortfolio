@@ -956,6 +956,17 @@ h2 {
 .article-card:hover {
   border-color: var(--accent);
 }
+
+.article-card--text-only {
+  grid-template-columns: minmax(0, 1fr) 50px;
+}
+
+@media (max-width: 1100px) {
+  .article-card--text-only {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .article-image {
   height: 212px;
   overflow: hidden;
