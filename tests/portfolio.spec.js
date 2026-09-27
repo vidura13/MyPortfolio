@@ -79,6 +79,7 @@ test("CV, original media, email and social destinations remain available", async
     "/projects/Project3_1.png",
     "/projects/Project4_1.png",
     "/historyofslcricArticle.webp",
+    "/isae_certificate.jpg",
   ]) {
     expect((await request.get(path)).status()).toBe(200);
   }

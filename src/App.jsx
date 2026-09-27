@@ -326,6 +326,7 @@ export default function App() {
             category="CONFERENCE PAPER"
             title="Green Mart: A user-centered mobile application for sustainable online shopping"
             description="A user-centered design and usability evaluation of GreenMart, a prototype sustainable shopping platform. Published in the proceedings of the International Symposium on Agriculture and Environment (ISAE 2026), University of Ruhuna."
+            image="/isae_certificate.jpg" 
             link="https://www.researchgate.net/publication/414470982_Green_Mart_A_user-centered_mobile_application_for_sustainable_online_shopping"
             date="Sep 2026"
             info="Read the publication on ResearchGate"
